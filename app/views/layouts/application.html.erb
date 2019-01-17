@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bakery20</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#00aba9">
+    <meta name="theme-color" content="#ffffff">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"><img src="/favicon.ico"style="width:64px"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <% if signed_in? %>
+              <a class="nav-item nav-link" href="#">Main Page <span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link"  href="#">Courses</a>
+              <a class="nav-item nav-link"  href="#">Database</a>
+              Signed in as: <%= current_user.email %>
+              <%= button_to 'Sign out', sign_out_path, method: :delete %>
+            <% else %>
+              <a class="nav-item nav-link" data-toggle="modal" data-target="#login" href="/sign_in">Log In</a>
+              <a class="nav-item nav-link" data-toggle="modal" data-target="#signup" href="/sign_up">Sign Up</a>
+            <% end %>
+        </div>
+      </div>
+    </nav>
+    <%= yield %>
+    <div id="flash">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+    </div>
+  </body>
+</html>
