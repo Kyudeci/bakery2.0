@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/cookie'=> "pages#cookie"
   get '/cake' => "pages#cake"
   get '/cupcake' => "pages#cupcake"
+  post '/pages/home' => "pages#create"
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
