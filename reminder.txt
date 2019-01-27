@@ -1,0 +1,6 @@
+Fix carousel:
+    -Image sizing
+    -Transparency
+
+Create Databases for Item type:
+    -Link to user
