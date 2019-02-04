@@ -1,2 +1,40 @@
-<h1>Pages#cookie</h1>
-<p>Find me in app/views/pages/cookie.html.erb</p>
+<div style="width:500px">
+<%= bootstrap_form_tag url: '/cookie', :class => "form-horizontal" do |f| %>
+  <%= f.select :cookie_type, [["Regular", "Regular"], ["Swirl", "Swirl"]], required: true%>
+  <%= f.text_field :flavors, label: "Flavor(s):", required: true, help: "Separate multiple flavors with a comma!" %>
+  <%= f.number_field :amount, label: "Amount:", required: true %>
+  <%= f.hidden_field :price %>
+  <%= f.submit "Place Order", class: "btn btn-success"%>
+<% end %>
+</div>
+<table class="table table-dark table-bordered>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Type of Cookie</th>
+      <th scope="col">Flavor(s)</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Price</th>
+  </thead>
+  <tbody>
+      <% @cookies.each do |cookies| %>
+      <tr>
+        <th scope="row"><%= cookies.id %></th>
+        <td><%= cookies.cookie_type %></td>
+        <td><%= cookies.flavors %></td>
+        <td><%= cookies.amount %></td>
+        <% if cookies.cookie_type == "Swirl" %>
+            <% if cookies.amount >= 18 %>
+              <td><%= number_to_currency(cookies.amount * 1.10) %></td>
+            <% elsif cookies.amount >= 12 %>
+              <td><%= number_to_currency(cookies.amount * 1.25) %></td>
+            <% else %>
+              <td><%= number_to_currency(cookies.amount * 1.5) %></td>
+            <% end %>
+        <% else %>
+          <td><%= number_to_currency(cookies.amount * 1.0) %></td>
+        <% end %>
+      </tr>
+      <% end %>
+  </tbody>
+</table>
