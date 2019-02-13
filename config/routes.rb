@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :cookies
+  resources :carts
+  get 'carts/index'
   root to: "pages#home"
   get '/main' => "pages#main"
   get '/cookie'=> "pages#cookie"

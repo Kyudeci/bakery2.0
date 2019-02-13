@@ -35,6 +35,16 @@
               <a class="nav-item nav-link" data-toggle="modal" data-target="#login" href="/sign_in">Log In</a>
               <a class="nav-item nav-link" data-toggle="modal" data-target="#signup" href="/sign_up">Sign Up</a>
             <% end %>
+            <% if total_cart_items %>
+              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <span class="icon is-small">
+                <i class="fa fa-shopping-cart"></i>
+              </span>
+              <span>Cart
+                <%= cart_count_over_one %>
+                </span>
+              <% end %>
+            <% end %>
         </div>
       </div>
     </nav>
