@@ -26,7 +26,7 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    cookie = Cookie.find(params[:cookie_id])
+    cookie = Cookie.find(1)
     @line_item = @cart.add_cookie(cookie)
 
     respond_to do |format|

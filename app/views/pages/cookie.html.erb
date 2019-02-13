@@ -15,6 +15,7 @@
       <th scope="col">Flavor(s)</th>
       <th scope="col">Amount</th>
       <th scope="col">Price</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -35,6 +36,7 @@
         <% else %>
           <td><%= number_to_currency(cookies.amount * 1.0) %></td>
         <% end %>
+          <td><%= button_to 'Add to cart', line_items_path(cookie_id: @cookie), class: 'button is-warning add-to-cart' %></td>
       </tr>
       <% end %>
   </tbody>

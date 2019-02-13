@@ -31,12 +31,8 @@
               Signed in as: <%= current_user.email %>
               <%=button_to 'Sign out', sign_out_path, method: :delete%>
               </div>
-            <% else %>
-              <a class="nav-item nav-link" data-toggle="modal" data-target="#login" href="/sign_in">Log In</a>
-              <a class="nav-item nav-link" data-toggle="modal" data-target="#signup" href="/sign_up">Sign Up</a>
-            <% end %>
-            <% if total_cart_items %>
-              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+              <% if total_cart_items %>
+                <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
               <span class="icon is-small">
                 <i class="fa fa-shopping-cart"></i>
               </span>
@@ -44,6 +40,10 @@
                 <%= cart_count_over_one %>
                 </span>
               <% end %>
+            <% end %>
+            <% else %>
+              <a class="nav-item nav-link" data-toggle="modal" data-target="#login" href="/sign_in">Log In</a>
+              <a class="nav-item nav-link" data-toggle="modal" data-target="#signup" href="/sign_up">Sign Up</a>
             <% end %>
         </div>
       </div>
