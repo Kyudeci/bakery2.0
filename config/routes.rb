@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :carts
+  get 'carts/index'
   root to: "pages#home"
   get '/main' => "pages#main"
   get '/cookie'=> "pages#cookie"
@@ -6,6 +8,7 @@ Rails.application.routes.draw do
   get '/cupcake' => "pages#cupcake"
   post '/pages/home' => "pages#create"
   post '/cookie' => 'pages#create'
+  resources :carts
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
